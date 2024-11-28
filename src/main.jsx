@@ -4,15 +4,28 @@ import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AddUser from "./components/addUser.jsx";
+import UserList from "./components/UserList.jsx";
+import Layout from "./components/Layout.jsx";
 
 const router = createBrowserRouter([
 	{
 		path: "/",
-		element: <App></App>,
-	},
-	{
-		path: "/addUser",
-		element: <AddUser></AddUser>,
+		element: <Layout></Layout>,
+		children: [
+			{
+				path: "/",
+				element: <App></App>,
+				loader: () => fetch("http://localhost:5000/user"),
+			},
+			{
+				path: "/addUser",
+				element: <AddUser></AddUser>,
+			},
+			{
+				path: "/UserList",
+				element: <UserList></UserList>,
+			},
+		],
 	},
 ]);
 
