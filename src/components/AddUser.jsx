@@ -1,10 +1,35 @@
+import Swal from "sweetalert2";
+
 const AddUser = () => {
 	const handleAddUser = (e) => {
 		e.preventDefault();
 		const form = e.target;
 		const email = form.email.value;
 		const password = form.password.value;
-		console.log(email, password);
+
+		const newUser = { email, password };
+		console.log(newUser);
+
+		// send data to the server
+		fetch("http://localhost:5000/user", {
+			method: "POST",
+			headers: {
+				"content-type": "application/json",
+			},
+			body: JSON.stringify(newUser),
+		})
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				if (data.insertedId) {
+					Swal.fire({
+						title: "Success!",
+						text: "User added successfully",
+						icon: "success",
+						confirmButtonText: "Cool",
+					});
+				}
+			});
 	};
 	return (
 		<div>
