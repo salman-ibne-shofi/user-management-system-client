@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import "./App.css";
 import { useState } from "react";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 function App() {
 	const LoadedUsers = useLoaderData();
@@ -15,11 +15,11 @@ function App() {
 			.then((data) => {
 				if (data.deletedCount > 0) {
 					Swal.fire({
-                        title: 'Success',
-                        text: 'User removed successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                      })
+						title: "Success",
+						text: "User removed successfully",
+						icon: "success",
+						confirmButtonText: "Cool",
+					});
 					// remove user from UI
 					const remainingUsers = users.filter(
 						(user) => user._id !== id
@@ -48,8 +48,8 @@ function App() {
 								<th>1</th>
 								<td>{user.name}</td>
 								<td>{user.email}</td>
-								<td>Blue</td>
-								<td>Blue</td>
+								<td>{user.gender}</td>
+								<td>{user.status}</td>
 								<td>
 									<button
 										onClick={() => handleDelete(user._id)}

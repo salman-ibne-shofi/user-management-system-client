@@ -1,13 +1,29 @@
+import { useState } from "react";
 import Swal from "sweetalert2";
 
 const AddUser = () => {
+	const [status, setStatus] = useState("active");
+	const [gender, setGender] = useState("male");
+
 	const handleAddUser = (e) => {
 		e.preventDefault();
 		const form = e.target;
 		const name = form.name.value;
 		const email = form.email.value;
 
-		const newUser = { name, email };
+		if (document.getElementById("male").checked) {
+			setGender("male");
+		} else {
+			setGender("female");
+		}
+
+		if (document.getElementById("active").checked) {
+			setStatus("active");
+		} else {
+			setStatus("inactive");
+		}
+
+		const newUser = { name, email, gender, status };
 		console.log(newUser);
 
 		// send data to the server
@@ -64,6 +80,68 @@ const AddUser = () => {
 									className="input input-bordered"
 									required
 								/>
+							</div>
+							<div className="flex items-center justify-between">
+								<h2>Gender</h2>
+								<div className="form-control">
+									<label className="label cursor-pointer gap-2">
+										<span className="label-text">Male</span>
+										<input
+											type="radio"
+											name="radio-10"
+											className="radio checked:bg-blue-500"
+											id="male"
+											defaultChecked
+										/>
+									</label>
+								</div>
+								<div className="form-control">
+									<label className="label cursor-pointer gap-2">
+										<span className="label-text">
+											Female
+										</span>
+										<input
+											type="radio"
+											name="radio-10"
+											id="female"
+											className="radio checked:bg-blue-500"
+											defaultChecked
+										/>
+									</label>
+								</div>
+							</div>
+							<div className="flex items-center justify-between">
+								<h2>Status</h2>
+								<div className="form-control">
+									<label className="label cursor-pointer gap-2">
+										<span className="label-text">
+											Active
+										</span>
+										<input
+											type="radio"
+											name="radio11"
+											id="active"
+											value="active"
+											className="radio checked:bg-blue-500"
+											defaultChecked
+										/>
+									</label>
+								</div>
+								<div className="form-control">
+									<label className="label cursor-pointer gap-2">
+										<span className="label-text">
+											Inactive
+										</span>
+										<input
+											type="radio"
+											name="radio11"
+											id="Inactive"
+											value="inactive"
+											className="radio checked:bg-blue-500"
+											defaultChecked
+										/>
+									</label>
+								</div>
 							</div>
 							<div className="form-control mt-6">
 								<button className="btn btn-primary">
