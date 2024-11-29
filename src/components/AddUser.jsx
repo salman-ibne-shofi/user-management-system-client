@@ -4,10 +4,10 @@ const AddUser = () => {
 	const handleAddUser = (e) => {
 		e.preventDefault();
 		const form = e.target;
+		const name = form.name.value;
 		const email = form.email.value;
-		const password = form.password.value;
 
-		const newUser = { email, password };
+		const newUser = { name, email };
 		console.log(newUser);
 
 		// send data to the server
@@ -43,24 +43,24 @@ const AddUser = () => {
 						<form onSubmit={handleAddUser} className="card-body">
 							<div className="form-control">
 								<label className="label">
-									<span className="label-text">Email</span>
+									<span className="label-text">Name</span>
 								</label>
 								<input
-									type="email"
-									name="email"
-									placeholder="email"
+									type="name"
+									name="name"
+									placeholder="name"
 									className="input input-bordered"
 									required
 								/>
 							</div>
 							<div className="form-control">
 								<label className="label">
-									<span className="label-text">Password</span>
+									<span className="label-text">Email</span>
 								</label>
 								<input
-									type="password"
-									name="password"
-									placeholder="password"
+									type="email"
+									name="email"
+									placeholder="email"
 									className="input input-bordered"
 									required
 								/>

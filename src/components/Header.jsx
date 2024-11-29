@@ -9,9 +9,6 @@ const Header = () => {
 			<li>
 				<NavLink to="/addUser">Add User</NavLink>
 			</li>
-			<li>
-				<NavLink to="/UserList">Users</NavLink>
-			</li>
 		</>
 	);
 	return (
